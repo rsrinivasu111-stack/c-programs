@@ -1,0 +1,79 @@
+CREATE DATABASE Collegess;
+
+SHOW DATABASES;
+
+USE Collegess;
+
+CREATE TABLE student_table(
+    student_ID INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    age INT,
+    gender VARCHAR(10),
+    department VARCHAR(30),
+    semester INT,
+    city VARCHAR(30),
+    cgpa DECIMAL(3,2)
+);
+
+INSERT INTO student_table
+(student_ID, student_name, age, gender, department, semester, city, cgpa)
+VALUES
+(101,'Akhil Kumar',20,'Male','CSE',3,'Hyderabad',8.45),
+(102,'Harini',19,'Female','ECE',2,'Visakhapatnam',9.10),
+(103,'Sai Teja',21,'Male','AI & ML',5,'Vijayawada',8.75),
+(104,'Sneha',20,'Female','MBA',1,'Guntur',9.20),
+(105,'Karthik',22,'Male','Mechanical',7,'Warangal',7.95);
+
+UPDATE student_table
+SET department='Data Science'
+WHERE student_ID=103;
+
+SELECT * FROM student_table;
+
+CREATE TABLE faculty_table(
+    faculty_ID INT PRIMARY KEY,
+    faculty_name VARCHAR(50),
+    age INT,
+    gender VARCHAR(10),
+    department VARCHAR(30),
+    designation VARCHAR(30),
+    salary INT,
+    city VARCHAR(30)
+);
+
+INSERT INTO faculty_table
+(faculty_ID, faculty_name, age, gender, department, designation, salary, city)
+VALUES
+(201,'Dr. Anil Kumar',45,'Male','CSE','Professor',95000,'Hyderabad'),
+(202,'Dr. Lakshmi',40,'Female','ECE','Associate Professor',85000,'Visakhapatnam'),
+(203,'Dr. Ravi Kumar',48,'Male','AI & ML','Professor',98000,'Vijayawada'),
+(204,'Dr. Swathi',38,'Female','MBA','Assistant Professor',72000,'Guntur'),
+(205,'Dr. Srinivas',50,'Male','Mechanical','Professor',99000,'Warangal');
+
+UPDATE faculty_table
+SET designation='Associate Professor'
+WHERE faculty_ID=205;
+
+SELECT * FROM faculty_table;
+
+SELECT student_ID, student_name, age
+FROM student_table;
+
+SELECT student_name, city
+FROM student_table;
+
+SELECT student_name, department
+FROM student_table;
+
+SELECT faculty_name, salary
+FROM faculty_table;
+
+SELECT faculty_name, department
+FROM faculty_table;
+
+SELECT student_ID, student_name AS Name, age AS Age
+FROM student_table;
+
+SELECT S.student_name AS Name, E.city AS Adress
+FROM student_table AS S, student_table AS E
+WHERE S.student_ID = E.student_ID;
